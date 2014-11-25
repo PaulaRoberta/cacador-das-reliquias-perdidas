@@ -8,7 +8,8 @@ function Start(){
 	PlayerPrefs.SetString('cidade','caíco');
 	PlayerPrefs.SetInt('objetivos',0);
 	PlayerPrefs.SetInt('hora',7);
-
+	var horalocal = PlayerPrefs.GetInt('hora');
+	print(horalocal);
 	var mapButtons : GameObject[] = GameObject.FindGameObjectsWithTag('mapButton');
 	objetivos = new String[mapButtons.length];
 	var i = 0;
@@ -17,14 +18,16 @@ function Start(){
 		i++;
 	}
 
-	onShowCanvasDialogue("Rodoviária");
+	//onShowCanvasDialogue("Rodoviária");
 }
+
 function callCanvasDialogue(place:String){
 	onShowCanvasDialogue(place);	
 }
 function onShowCanvasDialogue(place:String){
 	var placeHour   : UnityEngine.UI.Text = GameObject.Find('horalocal').GetComponent('Text');
 	var horalocal = PlayerPrefs.GetInt('hora');
+	print(horalocal);
 	for(var h=0;h<=60;h++){
 		var ht = h <10 ? "0"+h.ToString() : h.ToString();
 		placeHour.text = horalocal+":"+ht;
@@ -60,8 +63,9 @@ function onShowCanvasDialogue(place:String){
 			var play : GameObject = GameObject.Find('playButton');
 			var PlayButtonImage : UnityEngine.UI.Image = play.GetComponent("Image");
 			var PlayButton : UnityEngine.UI.Button = play.GetComponent("Button");
+			var PlayButtonText : UnityEngine.UI.Text = GameObject.Find('JogarButton').GetComponent('Text');
 			PlayButton.interactable = true;
-			PlayButtonImage.color = new Color(255,255,255,1);
+			PlayButtonText.color = new Color(255,255,0,1);
 		}
 	}
 	print(PlayerPrefs.GetInt('objetivos'));
