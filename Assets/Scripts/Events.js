@@ -3,9 +3,10 @@
 static var qtdObjetivos = 0;
 var canvasDialogue: GameObject;
 var objetivos : String[];
+var cidade : String;
 
 function Start(){
-	PlayerPrefs.SetString('cidade','caíco');
+	PlayerPrefs.SetString('cidade',cidade);
 	PlayerPrefs.SetInt('objetivos',0);
 	PlayerPrefs.SetInt('hora',7);
 	var horalocal = PlayerPrefs.GetInt('hora');
@@ -25,9 +26,9 @@ function callCanvasDialogue(place:String){
 	onShowCanvasDialogue(place);	
 }
 function onShowCanvasDialogue(place:String){
-	var placeHour   : UnityEngine.UI.Text = GameObject.Find('horalocal').GetComponent('Text');
+	var placeHour : UnityEngine.UI.Text = GameObject.Find('horalocal').GetComponent('Text');
 	var horalocal = PlayerPrefs.GetInt('hora');
-	print(horalocal);
+	print(placeHour);
 	for(var h=0;h<=60;h++){
 		var ht = h <10 ? "0"+h.ToString() : h.ToString();
 		placeHour.text = horalocal+":"+ht;
